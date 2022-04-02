@@ -6,10 +6,12 @@ import os
 import numpy as np
 
 # Duckietown Specific
+# import sys
+# sys.path.append('./../../')
 from reinforcement.pytorch.ddpg import DDPG
 from reinforcement.pytorch.utils import seed, evaluate_policy, ReplayBuffer
-from utils.env import launch_env
-from utils.wrappers import NormalizeWrapper, ImgWrapper, DtRewardWrapper, ActionWrapper, ResizeWrapper
+from utilsx.env import launch_env
+from utilsx.wrappers import NormalizeWrapper, ImgWrapper, DtRewardWrapper, ActionWrapper, ResizeWrapper
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -58,6 +60,7 @@ def _train(args):
     episode_timesteps = 0
     print("Starting training")
     while total_timesteps < args.max_timesteps:
+        print('total_timesteps:', total_timesteps, 'args.max_timesteps', args.max_timesteps)
 
         print("timestep: {} | reward: {}".format(total_timesteps, reward))
 

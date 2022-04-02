@@ -4,9 +4,9 @@ import argparse
 import sys
 import numpy as np
 
-from utils.teacher import PurePursuitExpert
-from utils.env import launch_env
-from utils.wrappers import NormalizeWrapper, DtRewardWrapper, ActionWrapper, ResizeWrapper
+from utilsx.teacher import PurePursuitExpert
+from utilsx.env import launch_env
+from utilsx.wrappers import NormalizeWrapper, DtRewardWrapper, ActionWrapper, ResizeWrapper
 
 from imitation.tensorflow.model import TensorflowModel
 
