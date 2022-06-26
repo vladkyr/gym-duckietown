@@ -49,9 +49,10 @@ class ResizeWrapper(gym.ObservationWrapper):
         self.shape = shape
 
     def observation(self, observation):
-        from scipy.misc import imresize
-
-        return imresize(observation, self.shape)
+        # from scipy.misc import imresize
+        # return imresize(observation, self.shape)
+        from skimage.transform import resize
+        return resize(observation, self.shape)
 
 
 class NormalizeWrapper(gym.ObservationWrapper):

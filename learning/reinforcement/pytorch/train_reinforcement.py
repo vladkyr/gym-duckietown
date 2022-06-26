@@ -117,6 +117,10 @@ def _train(args):
         total_timesteps += 1
         timesteps_since_eval += 1
 
+        if total_timesteps >= 500 and total_timesteps % 5 == 0:
+            print("Saving models...")
+            policy.save(filename="ddpg", directory=args.model_dir)
+
     print("Training done, about to save..")
     policy.save(filename="ddpg", directory=args.model_dir)
     print("Finished saving..should return now!")

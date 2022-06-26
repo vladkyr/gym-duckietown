@@ -4,6 +4,8 @@ import logging
 
 import os
 import numpy as np
+from PIL import Image
+import pyglet
 
 # Duckietown Specific
 from reinforcement.pytorch.ddpg import DDPG
@@ -41,7 +43,14 @@ def _enjoy():
             print('action', action)
             # Perform action
             obs, reward, done, _ = env.step(action)
-            env.render()
+            # img_render = env.render(mode='human')
+            img_render = env.render(mode='top_down')
+            img = Image.fromarray(img_render, 'RGB')
+            # img.rotate(180)
+            img.show()
+
+            # env.render(mode='top_down')
+
         done = False
         obs = env.reset()
 
