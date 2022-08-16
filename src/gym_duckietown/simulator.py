@@ -172,7 +172,7 @@ DEFAULT_FRAME_SKIP = 1
 
 DEFAULT_ACCEPT_START_ANGLE_DEG = 60
 
-REWARD_INVALID_POSE = -1000
+REWARD_INVALID_POSE = 0
 
 MAX_SPAWN_ATTEMPTS = 5000
 
@@ -587,7 +587,7 @@ class Simulator(gym.Env):
         # gl.glLightfv(gl.GL_LIGHT0, gl.GL_LINEAR_ATTENUATION, (gl.GLfloat * 1)(0.3))
         # gl.glLightfv(gl.GL_LIGHT0, gl.GL_QUADRATIC_ATTENUATION, (gl.GLfloat * 1)(0.1))
 
-        gl.glEnable(gl.GL_LIGHTING)
+        # gl.glEnable(gl.GL_LIGHTING)
         gl.glEnable(gl.GL_COLOR_MATERIAL)
 
         # Ground color
@@ -874,6 +874,7 @@ class Simulator(gym.Env):
             self.start_pose = None
             if "start_pose" in map_data:
                 self.start_pose = map_data["start_pose"]
+                logger.debug(f'map has a start pose: "{self.start_pose}"')
         except Exception as e:
             msg = "Cannot load map data"
             raise InvalidMapException(msg, map_data=map_data)
